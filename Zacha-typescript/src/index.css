@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body,
+#root,
+.app{
+    height: 100%;
+    width: 100%;
+    font-family: "DM sans", sans-serif;
+    @apply text-gray-400;
+}
+.black-text {
+    color: black;
+}
+
+.zacka-text-container {
+    width: 400px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    animation: rotateZacka 15s linear infinite; /* Adjust the animation duration and timing function as needed */
+}
+
+@keyframes rotateZacka {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
