@@ -7,7 +7,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import test from "@/assets/test.mp4";
 import Instagrame from"@/assets/instagram-logo.png";
 import Tiktok from"@/assets/téléchargement.png";
-import RedBull from"@/assets/SponsorRedBull.png";
 import { motion } from 'framer-motion';
 
 
