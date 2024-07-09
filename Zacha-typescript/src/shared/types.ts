@@ -11,3 +11,10 @@ title: string;
 description: string;
 
 }
+
+export interface ShopType{
+ name: string;
+ description?: string;
+ image: string;
+
+}

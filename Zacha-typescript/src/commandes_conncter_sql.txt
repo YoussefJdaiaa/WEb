@@ -1,5 +1,0 @@
-cd "C:\Program Files\PostgreSQL\16\bin"
-
-.\psql -U postgres -d Zacka_web -h localhost -p 5432
-
-cd C:\Users\youss\Desktop\Projet_Zacka\WEb\Zacha-typescript

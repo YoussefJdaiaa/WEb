@@ -2,6 +2,7 @@ import ActionButton from "@/shared/ActionButton";
 import HText from "@/shared/HText";
 import { AboutType, SelectedPage } from "@/shared/types";
 import {
+  HomeModernIcon,
   UserGroupIcon,
   StarIcon,
   RocketLaunchIcon,
