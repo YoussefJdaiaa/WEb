@@ -1,7 +1,13 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import pool from './db.js';  // Notez le .js
+
+// Configurer __dirname pour les modules ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -12,18 +18,23 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Route pour récupérer tous les clients
-app.get('/api/clients', async (req, res) => {
+app.get('/api/clients', async (_req: Request, res: Response) => {  // Utilisation de _req
   try {
     const result = await pool.query('SELECT * FROM client');
     res.json(result.rows);
-  } catch (err: any) {
-    console.error(err.message);
-    res.status(500).send('Erreur du serveur');
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error(err.message);
+      res.status(500).send('Erreur du serveur');
+    } else {
+      console.error('Unknown error', err);
+      res.status(500).send('Erreur inconnue du serveur');
+    }
   }
 });
 
 // Route pour ajouter un nouveau client
-app.post('/api/clients', async (req, res) => {
+app.post('/api/clients', async (req: Request, res: Response) => {
   try {
     const { nom, prenom, sexe, age } = req.body;
     const result = await pool.query(
@@ -31,9 +42,14 @@ app.post('/api/clients', async (req, res) => {
       [nom, prenom, sexe, age]
     );
     res.json(result.rows[0]);
-  } catch (err: any) {
-    console.error(err.message);
-    res.status(500).send('Erreur du serveur');
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error(err.message);
+      res.status(500).send('Erreur du serveur');
+    } else {
+      console.error('Unknown error', err);
+      res.status(500).send('Erreur inconnue du serveur');
+    }
   }
 });
 
